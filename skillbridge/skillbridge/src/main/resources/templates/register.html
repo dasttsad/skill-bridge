@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{header}"></div>
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+<head>
+    
+    <body>
+        <!-- Navbar Start -->
+    
+         <!-- Navbar Start -->
+    <nav th:replace="~{navbar}"></nav>
+    <!-- Navbar End -->
+        <!-- Navbar End -->
+    
+        <div class="register" id="registerForm">
+            <img th:src="@{/img/login3.jpg}" alt="image" class="register__bg">
+            <form class="register__form" id="registerForm" th:action="@{/register}" method="post">
+                <h1 class="register__title">Registrazione</h1>
+    
+                <div class="register__inputs">
+                    <div class="register__box">
+                        <input type="text" id="nome" placeholder="Nome" required class="register__input" namne="nome">
+                        <i class="ri"></i>
+                    </div>
+                    <div class="register__box">
+                        <input type="text" id="cognome" placeholder="Cognome" required class="register__input" name="cognome">
+                        <i class="ri"></i>
+                    </div>
+                    <div class="register__box">
+                        <input type="date" id="data_di_nascita" placeholder="Data di nascita" required class="register__input" name="data_di_nascita">
+                        <i class="ri"></i>
+                    </div>
+                    <div class="register__box">
+                        <input type="email" id="email" placeholder="Email ID" required class="register__input" name="email">
+                        <i class="ri-mail-fill"></i>
+                    </div>
+    
+                    <div class="register__box">
+                        <input type="text" id="username" placeholder="username" required class="register__input" name="username">
+                        <i class="ri-mail-fill"></i>
+                    </div>
+    
+                    <div class="register__box">
+                        <input type="password" id="password" placeholder="Password" required class="register__input" name="password">
+                        <i class="ri-lock-2-fill"></i>
+                    </div>
+                </div>
+    
+                <button type="submit" id="registerBtn" class="register__button">Registrati</button>
+    
+                <div class="register__register">
+                    hai un account? <a th:href="@{/login}">Accedi</a>
+                </div>
+            </form>
+        </div>
+    
+        <div th:replace="~{javascriptlibraries}"></div>
+    </body>
+    
+    </html>

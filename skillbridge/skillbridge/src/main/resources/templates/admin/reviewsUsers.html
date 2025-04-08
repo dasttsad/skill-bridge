@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script th:src="@{/js/review.js}" defer></script>
+    <title>Utenti List</title>
+</head>
+<body>
+    <div>
+        <h1>Utenti List</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Data di Nascita</th>
+                    <th>Reviews Subite</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="utente : ${utenti}">
+                    <td th:text="${utente.id}">User ID</td>
+                    <td th:text="${utente.nome}">Nome</td>
+                    <td th:text="${utente.cognome}">Cognome</td>
+                    <td th:text="${utente.username}">Username</td>
+                    <td th:text="${utente.email}">Email</td>
+                    <td th:text="${utente.data_di_Nascita}">Data di Nascita</td>
+                    <td>
+                        <ul>
+                            <li th:each="review : ${utente.recensioniSubite}">
+                                <span th:text="${review.testo}">Post Title</span>
+                                <span>
+                                    <button th:attr="
+                                    modifica-id=${review.id},
+                                    modifica-testo=${review.testo},
+                                    modifica-voto=${review.voto},
+                                    modifica-immagine=${review.immagine},
+                                    " onclick="modificaRecensione(this)">
+                                        modifica
+                                    </button>
+                                    <form th:action="@{/recensione/elimina}" method="POST">
+                                        <input type="hidden" name="id" th:value="${review.id}" />
+                                        <button type="submit">Elimina</button>
+                                    </form>
+                                </span>
+                            </li>
+                        </ul>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Data di Nascita</th>
+                    <th>Reviews Fatte</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="utente : ${utenti}">
+                    <td th:text="${utente.id}">User ID</td>
+                    <td th:text="${utente.nome}">Nome</td>
+                    <td th:text="${utente.cognome}">Cognome</td>
+                    <td th:text="${utente.username}">Username</td>
+                    <td th:text="${utente.email}">Email</td>
+                    <td th:text="${utente.data_di_Nascita}">Data di Nascita</td>
+                    <td>
+                        <ul>
+                            <li th:each="review : ${utente.recensioniSvolte}">
+                                <span th:text="${review.testo}">Post Title</span>
+                                <button th:attr="
+                                modifica-id=${review.id},
+                                modifica-testo=${review.testo},
+                                modifica-voto=${review.voto},
+                                modifica-immagine=${review.immagine},
+                                " onclick="modificaRecensione(this)">
+                                    modifica
+                                </button>
+                                <button>
+                                    <form th:action="@{recensione/elimina}" method="POST">
+                                        <input type="hidden" name="id" th:value="${review.id}" />
+                                        <button type="submit">Elimina</button>
+                                    </form>
+                                </button>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="form-modifica" hidden>
+        <form th:action="@{/modifica/recensioniConUtente}" method="post">
+            <label for="id" >Id</label>
+            <input type="number" id="id" name="id" readonly><br>
+            <label for="testo">Testo</label>
+            <input type="text" name="testo" id="testo"><br>
+            <label for="voto">voto</label>
+            <input type="number" id="voto" name="voto"><br>
+            <label for="immagine">immagine</label>
+            <input type="text" name="immagine" id="immagine"><br>
+            <input type="submit" value="modifica">
+        </form>
+    </div>
+</body>
+</html>

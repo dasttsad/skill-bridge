@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Post per ruolo:</h3>
+    
+    <ul>
+        <li th:each = "posts : ${posts}">
+
+            <span th:each = "post : ${posts}">
+                <span th:text = "${post.titolo}">Titolo:</span>
+                <span th:text = "${post.descrizione}">Descrizione:</span>
+                <span th:text = "${post.immagine}">Immagine:</span>
+                <!-- <span th:number = "${post.utente_id}">Post in base al ruolo:</span> -->
+            </span>
+
+        </li>
+    </ul>
+</body>
+</html>

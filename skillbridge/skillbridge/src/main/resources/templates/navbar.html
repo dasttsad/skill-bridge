@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+    <a th:href="@{/public/home}"><img th:src="@{/img/logo_transparent.png}" class="logo_nav"></a>
+
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <div class="search-container"  th:attr="data-role=${#authorization.expression('hasRole(''ROLE_FREELANCER'')') ? 'ROLE_FREELANCER' 
+            : (#authorization.expression('hasRole(''ROLE_CLIENTE'')') ? 'ROLE_CLIENTE' : '')}">
+                <span id="search-icon" class="fas fa-search"></span>
+                <input type="text" id="searchInput" class="search-bar me-4" placeholder="Cerca...">
+            </div>
+            <a th:href="@{/public/home}" class="nav-item nav-link">Home</a>
+            <a th:href="@{/public/learning}" class="nav-item nav-link">Learning</a>
+
+
+            <div th:if="${#authorization.expression('isAuthenticated()')}">
+
+                <div th:if="${#authorization.expression('hasRole(''ROLE_FREELANCER'')')}">
+                    <a th:href="@{/offerta}" class="nav-item nav-link">Offerte</a>
+                </div>
+
+                <div th:if="${#authorization.expression('hasRole(''ROLE_CLIENTE'')')}">
+                    <a th:href="@{/post}" class="nav-item nav-link">Consulenza</a>
+                </div>
+                
+                <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+                    <a th:href="@{/admin/corsi}" class="nav-item nav-link">Manutenzione</a>
+                </div>
+            </div>
+            <a th:href="@{/public/chisiamo}" class="nav-item nav-link">Chi siamo</a>
+            <a th:href="@{/public/assistenza}" class="nav-item nav-link">Assistenza</a>
+        </div>
+    </div>
+
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+    <!--profilo-->
+    <img th:src="@{/img/{firstLetter}.jpg(firstLetter=${#strings.substring(#authentication.name, 0, 1).toLowerCase()})}"  class="user-pic" onclick="toggleMenu()" id="profileImg">
+    <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+            <div class="user-info">
+                <img th:src="@{/img/{firstLetter}.jpg(firstLetter=${#strings.substring(#authentication.name, 0, 1).toLowerCase()})}" class="user-pic">
+
+                <h4><span th:text="${#authentication.name}">Username</span></h4>
+                <p th:text="${#strings.toLowerCase(
+                    #strings.replace(#authentication.authorities[0].authority, 'ROLE_', ''))}">
+                <!-- Displays "admin" instead of "ROLE_ADMIN" -->
+             </p>
+            </div>
+            <hr>
+            <a href="#" class="sub-menu-link">
+                <button id="theme-toggle">
+                    <i class="fas fa-sun"></i> <!-- L'icona cambierà dinamicamente -->
+                </button>
+                <p>Tema</p>
+            </a>
+            <hr>
+            <a th:href="@{/logout?logout}" class="sub-menu-link">
+                <img th:src="@{/img/logout.png}">
+                <p>Logout</p>
+                <span>></span>
+            </a>
+        </div>
+    </div>
+</div>
+    <a th:unless="${#authorization.expression('isAuthenticated()')}" th:href="@{/login}" class="btn btn-primary me-1 py-2 active" id="loginBtn">Log in</a>
+    <!-- <a th:href="@{/login2}" class="btn btn-primary me-1 py-2" id="loginBtn" style="display: none;">Log in</a> -->
+</nav>
+
+
+<div th:replace="~{javascriptlibraries}"></div>

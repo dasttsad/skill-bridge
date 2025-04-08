@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{header}"></div>
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+<head>
+  
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <nav th:replace="~{navbar}"></nav>
+    <!-- Navbar End -->
+        
+
+    <!-- Navbar End -->
+
+    <div class="login" id="loginForm">
+        <img th:src="@{img/login3.jpg}" alt="image" class="login__bg">
+
+        <form th:action="@{/login}" class="login__form" id="loginForm" method="post">
+
+
+            <h1 class="login__title">Accedi</h1>
+
+            <div class="login__inputs">
+                <div class="login__box">
+                    <input type="text" id="username" placeholder="username" name="username" required class="login__input">
+                    <i class="ri-mail-fill"></i>
+                </div>
+
+                <div class="login__box">
+                    <input type="password" id="password" placeholder="Password" name="password" required class="login__input">
+                    <i class="ri-lock-2-fill"></i>
+                </div>
+            </div>
+
+            <button type="submit" id="loginBtn" class="login__button" onclick="validate();">Accedi</button>
+
+            <div class="login__register">
+                Non hai un account? <a th:href="@{/register}">Registrati</a>
+            </div>
+        </form>
+    </div>
+
+    <div th:replace="~{javascriptlibraries}"></div>
+</body>
+</html>

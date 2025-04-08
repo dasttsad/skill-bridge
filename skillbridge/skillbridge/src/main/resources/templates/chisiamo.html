@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{header}"></div>
+</head>
+<body>
+     <!-- Navbar Start -->
+     <nav th:replace="~{navbar}"></nav>
+     <!-- Navbar End -->
+<div class="chisiamo_back">
+    <div class="chisiamo_container">
+        <div class="chisiamo_h">
+        <h1>Chi siamo</h1>
+        </div>
+        <div class="chisiamo_container_content w-100 p-4">
+            <h2>LA NOSTRA MISSIONE</h2>
+            <p style="color: black;">SkillBridge nasce con l'obiettivo di creare un ponte tra programmatori freelance e aziende in cerca di talenti qualificati. La nostra piattaforma offre un ambiente sicuro e professionale in cui sviluppatori e datori di lavoro possono connettersi, collaborare e crescere insieme.</p>
+        </div>
+        <div class="chisiamo_container_content w-100 p-4">
+            <h2>COSA OFFRIAMO?</h2>
+            <div class="chisiamo_card-deck">
+                <div class="chisiamo_card">
+                  <img class="chisiamo_card-img-top" th:src="@{/img/chi/opportunita_lavoro.jpg}" alt="Card image cap">
+                  <div class="chisiamo_card-body">
+                    <h5 class="chisiamo_card-title">Opportunità di lavoro:</h5>
+                    <p class="chisiamo_card-text">Mettiamo in contatto programmatori freelance con aziende che cercano sviluppatori per progetti di varia durata e complessità.</p>
+                  </div>
+                  <div class="chisiamo_card-footer">
+                    <small class="chisiamo_text-muted">Last updated 3 mins ago</small>
+                  </div>
+                </div>
+                <div class="chisiamo_card">
+                  <img class="chisiamo_card-img-top" th:src="@{/img/chi/corso_formazione.jpg}" alt="Card image cap">
+                  <div class="chisiamo_card-body">
+                    <h5 class="chisiamo_card-title">Corsi di formazione:</h5>
+                    <p class="chisiamo_card-text">Offriamo corsi di aggiornamento e formazione su diverse tecnologie, per aiutare i programmatori a rimanere competitivi nel mercato.</p>
+                  </div>
+                  <div class="chisiamo_card-footer">
+                    <small class="chisiamo_text-muted">Last updated 3 mins ago</small>
+                  </div>
+                </div>
+                <div class="chisiamo_card">
+                  <img class="chisiamo_card-img-top" th:src="@{/img/chi/tutori.jpg}" alt="Card image cap">
+                  <div class="chisiamo_card-body">
+                    <h5 class="chisiamo_card-title">Tutoring e mentorship:</h5>
+                    <p class="chisiamo_card-text">Supportiamo i professionisti con mentorship dedicate, per affinare le loro competenze e orientarsi nel mondo del lavoro.</p>
+                  </div>
+                  <div class="chisiamo_card-footer">
+                    <small class="chisiamo_text-muted">Last updated 3 mins ago</small>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="chisiamo_container_content w-100 p-4">
+            <h2>Perché scegliere SKILLBRIDGE?</h2>
+            <ul>
+                <li><b>Connessioni di valore:</b> Facilitiamo collaborazioni efficaci tra talenti IT e aziende.</li>
+                <li><b>Qualità e sicurezza:</b>Verifichiamo le competenze dei programmatori e la serietà dei clienti per garantire esperienze lavorative affidabili.</li>
+                <li><b>Crescita professionale:</b>Con i nostri corsi e il supporto di esperti, offriamo opportunità per migliorare e ampliare le competenze tecniche.</li>
+              </ul>
+        </div>
+    </div>
+</div>
+   <!--Footer start-->
+   <div th:replace="~{footer}"></div>
+   <!--Footer end-->
+   <div th:replace="~{javascriptlibraries}"></div>
+</body>
+</html>

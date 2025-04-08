@@ -1,0 +1,223 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <div th:replace="~{header}"></div>
+        <script th:src="@{/js-admin/admin/post.js}" defer></script>
+        <style>
+            /* General styles */
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+            }
+        
+            h2, h3 {
+                color: #2c3e50;
+                border-bottom: 2px solid #3498db;
+                padding-bottom: 10px;
+            }
+        
+            /* Course list styles */
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+        
+            li {
+                background: white;
+                margin-bottom: 15px;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                transition: transform 0.2s;
+            }
+        
+            li:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+        
+            span {
+                display: inline-block;
+                margin-right: 15px;
+                flex: 1;
+                min-width: 150px;
+            }
+        
+            /* Button styles */
+            button, a button {
+                background-color: #3498db;
+                color: white;
+                border: none;
+                padding: 8px 15px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: background-color 0.3s;
+                margin-left: 10px;
+            }
+        
+            button:hover, a button:hover {
+                background-color: #2980b9;
+            }
+        
+            a button {
+                text-decoration: none;
+                display: inline-block;
+            }
+        
+            /* Edit form styles */
+            #modificaForm {
+                background: white;
+                padding: 25px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                margin-top: 30px;
+            }
+        
+            #modificaForm label {
+                display: block;
+                margin-bottom: 15px;
+                font-weight: bold;
+                color: #2c3e50;
+            }
+        
+            #modificaForm input[type="text"],
+            #modificaForm input[type="number"] {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-top: 5px;
+            }
+        
+            #modificaForm button[type="submit"] {
+                background-color: #2ecc71;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        
+            #modificaForm button[type="submit"]:hover {
+                background-color: #27ae60;
+            }
+            nav.secondary-nav {
+            background: #2c3e50;
+            padding: 10px 0;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        nav.secondary-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav.secondary-nav li {
+            margin: 0 15px;
+        }
+        
+        nav.secondary-nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        nav.secondary-nav a:hover {
+            color: #3498db;
+        }
+        
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                li {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                
+                span {
+                    margin-bottom: 10px;
+                }
+                
+                button {
+                    margin: 5px 0;
+                }
+            }
+        </style>
+    </head>
+
+  
+<body>
+      <!-- Navbar Start -->
+      <nav th:replace="~{navbar}"></nav>
+
+      <nav class="secondary-nav">
+          <ul>
+              <li><a th:href="@{/admin/corsi}" active>corsi</a></li>
+              <li><a th:href="@{/admin/posts}">posts</a></li>
+              <li><a th:href="@{/admin/commento}">commenti</a></li>
+              <li><a th:href="@{/admin/utenti}">utenti</a></li>
+          </ul>
+      </nav>
+
+    <h2>Lista dei Post</h2>
+        <ul>
+            <li th:each="post : ${posts}">
+                <span th:text="${post.titolo}">Titolo</span>
+                <span th:text="${post.descrizione} ">Descrizione</span>
+                <span th:text="${post.immagine}"> Immagine </span> 
+                
+                <!-- AGGIUNTO 26-03-->
+                <button th:attr="
+                data-id=${post.id},
+                data-titolo=${post.titolo},
+                data-descrizione=${post.descrizione},
+                data-immagine=${post.immagine},
+                data-utente=${post.utente.id}"
+                onclick="modificaPost(this)" id="scrollToBottomBtn">Modifica 
+                </button> 
+                <td><a th:href="|/admin/elimina-post?id=${post.id}|"><button>Elimina</button></a></td>
+            </li>
+        </ul>
+
+        <script>
+            document.addEventListener('click', function(e) {
+                if (e.target && e.target.id === 'scrollToBottomBtn') {
+                    const pageHeight = Math.max(
+                        document.body.scrollHeight,
+                        document.documentElement.scrollHeight
+                    );
+                    window.scrollTo({ top: pageHeight, behavior: 'smooth' });
+                }
+            });
+        </script>  
+        <!-- data-utente=${post.utente.getId()} -->
+
+
+        <!-- AGGIUNTO 26-03-->
+        <h3>Modifica Post</h3>
+    <form id="modificaForm" style="display: none;" th:action="@{/admin/post/modifica}" method="POST">
+        <input type="hidden" id="Id" name="Id">
+        <input type="text" id="titolo" name="titolo"><br>
+        <label for="titolo">Titolo: </label>
+        <label for="descrizione">Descrizione: </label> <input type="text" id="descrizione" name="descrizione"><br>
+        <label for="immagine">Immagine: </label> <input type="text" id="immagine" name="immagine"><br>
+        <label for="utente">Utente Post: <input type="text" id="utente_id" name="utente_id"></label><br>
+        <button type="submit">Salva Modifiche</button>
+    </form>
+
+
+
+
+
+</body>
+</html>

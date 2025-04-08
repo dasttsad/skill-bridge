@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div th:replace="~{header}"></div>
+</head>
+<body>
+    <!-- Navbar Start -->
+    <nav th:replace="~{navbar}"></nav>
+    <!-- Navbar End -->
+
+    <!--Inizio contenuto pagina-->
+    <div class="assistenza-back">
+    <div class="cont_container__contatti d-flex justify-content-center align-items-center p-5">
+        <div class="cont_row d-flex justify-content-center align-items-center">
+            <!-- Prima card -->
+            <div class="col-md-4">
+                <div class="cont_card d-flex justify-content-center align-items-center">
+                    <img th:src="@{/img/contatti.png}" class="cont_card-img-top img-fluid w-25" alt="Contatti">
+                    <div class="cont_card-body">
+                        <h5 class="cont_card-title">I nostri contatti</h5>
+                        <p class="cont_card-text">Questa è una descrizione per la prima card. Può essere un testo che spiega brevemente il contenuto della card.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cont_card  d-flex justify-content-center align-items-center">
+                    <img th:src="@{/img/telefono.png}" class="cont_card-img-top img-fluid w-25" alt="Immagine 2">
+                    <div class="cont_card-body">
+                        <h5 class="cont_card-title">Chiama l'assistenza</h5>
+                        <p class="cont_card-text">Questa è una descrizione per la seconda card. Ogni card può contenere contenuti diversi ma avere lo stesso stile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--domande-->
+    <div class="container__domande p-5">
+        <h1 class="text-center">Q&A</h1>
+        <div class="accordion" id="accordion">
+            <!-- Prima sezione -->
+            <div class="row d-flex justify-content-center align-items-center p-3">
+                <button class="btn btn-primary w-50" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Come posso migliorare la mia visibilità sulla piattaforma?
+                </button>
+                <div id="collapseOne" class="collapse mt-3" data-bs-parent="#accordion">
+                    <div class="card card-body">
+                        Per migliorare la visibilità, è importante avere un profilo completo e professionale, includere un portfolio di lavori passati, ottenere recensioni positive, e rispondere rapidamente alle offerte. Le piattaforme spesso premiano i freelancer attivi con più visibilità.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seconda sezione -->
+            <div class="row d-flex justify-content-center align-items-center p-3">
+                <button class="btn btn-primary w-50" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Quali sono i criteri per essere selezionati dai clienti?
+                </button>
+                <div id="collapseTwo" class="collapse mt-3" data-bs-parent="#accordion">
+                    <div class="card card-body">
+                        I clienti solitamente considerano il tuo profilo (competenze, esperienza, portfolio, e recensioni), la proposta che invii per il progetto e la tua reattività. Un'offerta ben personalizzata, che dimostri di comprendere i bisogni del cliente, aumenta le probabilità di essere selezionato.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terza sezione -->
+            <div class="row d-flex justify-content-center align-items-center p-3">
+                <button class="btn btn-primary w-50" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Come posso ottenere più recensioni positive?
+                </button>
+                <div id="collapseThree" class="collapse mt-3" data-bs-parent="#accordion">
+                    <div class="card card-body">
+                        Fornire lavori di alta qualità, rispettare le scadenze e mantenere una buona comunicazione con i clienti sono modi fondamentali per ottenere recensioni positive. È anche utile chiedere un feedback dopo aver completato un progetto.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quarta sezione -->
+            <div class="row d-flex justify-content-center align-items-center p-3">
+                <button class="btn btn-primary w-50" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Quali sono gli elementi chiave di un buon profilo?
+                </button>
+                <div id="collapseFour" class="collapse mt-3" data-bs-parent="#accordion">
+                    <div class="card card-body">
+                        Un buon profilo dovrebbe includere una foto professionale, una descrizione chiara delle tue competenze, esperienze passate, un portfolio dei tuoi lavori e testimonianze (se disponibili). È anche importante avere una dichiarazione di intenti che risponda alle esigenze dei potenziali clienti.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Richieste-->
+    <div class="container__richieste p-5">
+        <p>Invia una richiesta</p>
+        <form action="#">
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Categoria</label>
+                <select id="category" name="category" required>
+                    <option value="">Seleziona una categoria</option>
+                    <option value="tecnica">Supporto Tecnico</option>
+                    <option value="fatturazione">Fatturazione</option>
+                    <option value="altro">Altro</option>
+                </select>
+            </div>
+            <div class="form-group ">
+                <label for="message">Messaggio</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="richieste-button">Invia Richiesta</button>
+        </form>
+    </div>
+
+    </div>
+    <!--Fine contenuto pagina-->
+    <!--Footer start-->
+ <!--Footer start-->
+ <div th:replace="~{footer}"></div>
+ <!--Footer end-->
+
+ <div th:replace="~{javascriptlibraries}"></div>
+</body>
+</html>

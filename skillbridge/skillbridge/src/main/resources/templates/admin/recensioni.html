@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Tutte le recensioni:</h2>
+    <ul>
+        <li th:each="recensione: ${recensioni}">
+            <span th:text="${recensione.testo}">Testo</span>
+            <span th:text="${recensione.voto}">Voto</span>
+            <span th:text="${recensione.immagine}">Immagine</span>
+        </li>
+    </ul>
+</body>
+</html>

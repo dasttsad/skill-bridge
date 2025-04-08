@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Tutti i ruoli</h2>
+    <ul>
+        <li th:each="ruolo : ${ruoli}">
+            <span th:text="${ruolo.tipo}">Ruolo</span>
+        </li>
+    </ul>
+</body>
+</html>

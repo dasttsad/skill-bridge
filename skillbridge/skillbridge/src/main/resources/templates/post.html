@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="@{header}"></div>
+</head>
+
+<body >
+    <!-- Navbar Start -->
+    <div th:replace="@{navbar}"></div>
+    <!-- Navbar End -->
+
+    <!--Post-->
+    <section class="post_section">
+        <div th:if="${#authorization.expression('hasRole(''ROLE_CLIENTE'')')}">
+            <div class="message_container">
+                <p class="message">Pubblica il tuo progetto e trova subito il programmatore perfetto per le tue
+                    esigenze!
+                </p>
+            </div>
+            <button class="create-post-btn" id="openPopup">Crea un nuovo Post</button>
+
+            <!-- Popup overlay and form -->
+            <div class="popup-overlay-creazionepost" id="popupOverlay-creazionepost">
+                <div class="popup-content">
+                    <button class="close-btn" id="closePopup">&times;</button>
+                    <form class="post-form" id="postForm">
+                        <h2>Crea un Post</h2>
+
+                        <div class="form-group">
+                            <label for="postTitle">Titolo Post</label>
+                            <input type="text" id="postTitle" name="postTitle" required
+                                placeholder="Inserisci il titolo del post">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postDescription">Descrizione</label>
+                            <textarea id="postDescription" name="postDescription" required
+                                placeholder="Descrivi il tuo post in dettaglio"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postImage">Immagine</label>
+                            <input type="file" id="postImage" name="postImage" accept="image/*">
+                            <small>Carica un'immagine dal tuo dispositivo</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tipo Post</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="jobOffer" name="postType" value="job" checked>
+                                    <label for="jobOffer">Job Offer (Client)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-btn">Crea Post</button>
+                    </form>
+                </div>
+            </div>
+            <!--card1-->
+            <div class="posts-container">
+                <div class="row">
+                    <div class="post_card1" th:each="post : ${posts}">
+                        <div class="post_image-container">
+                            <h2 style="color: rgb(255, 255, 255); margin: 0;"></h2>
+                            <img th:src="@{'/img/post/' + ${post.immagine}}" alt="post Screenshot">
+                        </div>
+                        <h6 class="title" th:text="${post.titolo}"></h6>
+                        <p class="post_description" th:text="${post.descrizione}"></p>
+                        <div class="post_author">
+                            <img th:src="@{/img/{firstLetter}.jpg(firstLetter=${#strings.substring(post.utente.username, 0, 1).toLowerCase()})}"
+                                alt="Author">
+                            <div class="post_author-info">
+                                <span th:text="${post.utente.username}"></span><br>
+                                <small>January 23, 2025</small>
+                            </div>
+                        </div>
+                        <button class="comment-btn" id="popup_btn" onclick="openCommentPopup('post1')"
+                            style="margin-left: 300px;">Commenta</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FREELANCER-->
+        <div th:if="${#authorization.expression('hasRole(''ROLE_FREELANCER'')')}">
+            <div class="message_container">
+                <p class="message">Cerca le migliori opportunità di lavoro!</p>
+            </div>
+            <button class="create-post-btn" id="openPopup">Crea un nuovo Post</button>
+
+            <!-- Popup overlay and form -->
+            <div class="popup-overlay-creazionepost" id="popupOverlay-creazionepost">
+                <div class="popup-content">
+                    <button class="close-btn" id="closePopup">&times;</button>
+                    <form class="post-form" id="postForm">
+                        <h2>Crea un Post</h2>
+
+                        <div class="form-group">
+                            <label for="postTitle">Titolo Post</label>
+                            <input type="text" id="postTitle" name="postTitle" required
+                                placeholder="Inserisci il titolo del post">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postDescription">Descrizione</label>
+                            <textarea id="postDescription" name="postDescription" required
+                                placeholder="Descrivi il tuo post in dettaglio"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postImage">Immagine</label>
+                            <input type="file" id="postImage" name="postImage" accept="image/*">
+                            <small>Carica un'immagine dal tuo dispositivo</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tipo Post</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="jobOffer" name="postType" value="job" checked>
+                                    <label for="jobOffer">Service Offer (Freelancer)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-btn">Crea Post</button>
+                    </form>
+                </div>
+            </div>
+            <!--card1-->
+            <div class="posts-container">
+                <div class="row">
+                    <div class="post_card1" th:each="post : ${posts}">
+                        <div class="post_image-container">
+                            <h2 style="color: rgb(255, 255, 255); margin: 0;"></h2>
+                            <img th:src="@{'/img/post/'+ ${post.immagine}}" alt="post Screenshot">
+                        </div>
+                        <h6 class="title" th:text="${post.titolo}"></h6>
+                        <p class="post_description" th:text="${post.descrizione}"></p>
+                        <div class="post_author">
+                            <img th:src="@{/img/{firstLetter}.jpg(firstLetter=${#strings.substring(post.utente.username, 0, 1).toLowerCase()})}"
+                                alt="Author">
+                            <div class="post_author-info">
+                                <span th:text="${post.utente.username}"></span><br>
+                                <small>January 23, 2025</small>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="comment-btn" id="popup2_btn" onclick="openCandidaturaPopup('post1')">
+                                Candidati</button>
+                            <button class="comment-btn" id="popup_btn"
+                                onclick="openCommentPopup('post1')">Commenta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="post_card2" id="card">
+                    <div class="post_image-container">
+                        <h2 style="color: rgb(255, 255, 255); margin: 0;"></h2>
+                        <img th:src="@{/img/post/post1.jpg}" alt="post Screenshot">
+                    </div>
+                    <h6 class="title">Cerco programmatori C++</h6>
+                    <p class="post_description">All the information you'll need to set up and "play" with the AgileOps
+                        Essential Free theme. Install...</p>
+                    <div class="post_author">
+                        <img th:src="@{/img/post/profilo1.jpg}" alt="Author">
+                        <div class="post_author-info">
+                            <span>Michael Speed</span><br>
+                            <small>January 23, 2025</small>
+                        </div>
+                    </div>
+                    <button class="comment-btn" id="popup_btn" onclick="openCommentPopup('post2')"
+                        style="margin-left: 300px;">Commenta</button>
+                </div>
+                <div class="post_card3" id="card">
+                    <div class="post_image-container">
+                        <h2 style="color: rgb(255, 255, 255); margin: 0;"></h2>
+                        <img th:src="@{/img/post/post1.jpg}" alt="post Screenshot">
+                    </div>
+                    <h6 class="title">Cerco programmatori C++</h6>
+                    <p class="post_description">All the information you'll need to set up and "play" with the AgileOps
+                        Essential Free theme. Install...</p>
+                    <div class="post_author">
+                        <img th:src="@{/img/post/profilo1.jpg}" alt="Author">
+                        <div class="post_author-info">
+                            <span>Gino BuonVIno</span><br>
+                            <small>January 23, 2025</small>
+                        </div>
+                    </div>
+                    <button class="comment-btn" id="popup_btn" onclick="openCommentPopup('post3')"
+                        style="margin-left: 300px;">Commenta</button>
+                </div>
+                <div class="post_card4" id="card">
+                    <div class="post_image-container">
+                        <h2 style="color: rgb(255, 255, 255); margin: 0;"></h2>
+                        <img th:src="@{/img/post/post1.jpg}" alt="post Screenshot">
+                    </div>
+                    <h6 class="title">Cerco programmatori C++</h6>
+                    <p class="post_description">All the information you'll need to set up and "play" with the AgileOps
+                        Essential Free theme. Install...</p>
+                    <div class="post_author">
+                        <img th:src="@{/img/post/profilo1.jpg}" alt="Author">
+                        <div class="post_author-info">
+                            <span>Michael Speed</span><br>
+                            <small>January 23, 2025</small>
+                        </div>
+                    </div>
+                    <button class="comment-btn" id="popup_btn" onclick="openCommentPopup('post4')"
+                        style="margin-left: 300px;">Commenta</button>
+                </div>
+
+                <div class="post_card5" id="card">
+                    <div class="post_image-container">
+                        <h2 style="color: rgb(255, 255, 255); margin: 0;"></h2>
+                        <img th:src="@{/img/post/post1.jpg}" alt="post Screenshot">
+                    </div>
+                    <h6 class="title">Cerco programmatori C++</h6>
+                    <p class="post_description">All the information you'll need to set up and "play" with the AgileOps
+                        Essential Free theme. Install...</p>
+                    <div class="post_author">
+                        <img th:src="@{/img/post/profilo1.jpg}" alt="Author">
+                        <div class="post_author-info">
+                            <span>Michael Speed</span><br>
+                            <small>January 23, 2025</small>
+                        </div>
+                    </div>
+                    <button class="comment-btn" id="popup_btn" onclick="openCommentPopup('post5')"
+                        style="margin-left: 300px;">Commenta</button>
+                </div>
+
+                <div class="post_card6" id="card">
+                    <div class="post_image-container">
+                        <h2 style="color: rgb(255, 255, 255); margin: 0;"></h2>
+                        <img th:src="@{/img/post/post1.jpg}" alt="post Screenshot">
+                    </div>
+                    <h6 class="title">Cerco programmatori C++</h6>
+                    <p class="post_description">All the information you'll need to set up and "play" with the AgileOps
+                        Essential Free theme. Install...</p>
+                    <div class="post_author">
+                        <img th:src="@{/img/post/profilo1.jpg}" alt="Author">
+                        <div class="post_author-info">
+                            <span>Gino BuonVIno</span><br>
+                            <small>January 23, 2025</small>
+                        </div>
+                    </div>
+                    <button class="comment-btn" id="popup_btn" onclick="openCommentPopup('post6')"
+                        style="margin-left: 300px;">Commenta</button>
+                </div> -->
+
+        <div class="popup-overlay" id="popupOverlay"></div>
+
+        <div class="comment-popup" id="commentPopup">
+            <h2>Commenti</h2>
+            <div class="comment-list" id="commentList"></div>
+            <textarea id="commentText" placeholder="Scrivi il tuo commento..."></textarea>
+            <div class="popup-buttons">
+                <button onclick="closeCommentPopup()">Chiudi</button>
+                <button onclick="submitComment()">Invia</button>
+            </div>
+        </div>
+        <div class="popup-overlay-candidatura" id="popupOverlayCandidatura"></div>
+        <div class="candidatura-popup" id="candidaturaPopup">
+            <h2>Inserisci i tuoi dati per candidarti:</h2>
+            <input type="text" placeholder="Nome" id="candnome">
+            <input type="text" placeholder="Cognome" id="candcognome">
+            <input type="email" placeholder="Email" id="candemail">
+            <hr>
+            <label for="pdfFile" class="form-label" id="candcv">Carica il tuo CV in PDF:</label>
+            <input type="file" accept="application/pdf" id="pdfFile" required>
+            <div class="popup-buttons">
+                <button onclick="closeCandidaturaPopup()">Chiudi</button>
+                <button onclick="submitCandidatura()" data-bs-toggle="modal" data-bs-target="#successModal">Invia
+                    Candidatura</button>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    <!--post end-->
+
+    <footer th:replace="@{footer}"></footer>
+
+    <!-- JavaScript Libraries -->
+    <div th:replace="@{javascriptlibraries}"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{header}"></div>
+<head>
+  
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <nav th:replace="~{navbar}"></nav>
+    <!-- Navbar End -->
+
+    <!--Card hero-->
+    <section class="hero-carousel-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="text-center mb-5 pb-2">
+                        <h1 class="text-white" style="font-size: 5rem;">Trova il talento giusto</h1>
+                        <h5 class="text-white" style="font-size: 2.5rem;">Sviluppa senza limiti</h5>
+                        <a th:href="@{/post}" class="btn custom-btn smoothscroll mt-3">Assumi un Freelancer</a>
+                    </div>
+
+                    <div class="owl-carousel owl-theme">
+                        <div class="owl-carousel-info-wrap item">
+                            <img th:src="@{/img/profile/smiling-business-woman-with-folded-hands-against-white-wall-toothy-smile-crossed-arms.jpg}" class="owl-carousel-image img-fluid" alt="">
+
+                            <div class="owl-carousel-info">
+                                <h4 class="mb-2">
+                                    Candice
+                                    <img th:src="@{/img/verified.png}" class="owl-carousel-verified-image img-fluid" alt="">
+                                </h4>
+
+                                <span class="badge">Senior Developer</span>
+                                <span class="badge">Front end Developer</span>
+                            </div>
+                        </div>
+
+                        <div class="owl-carousel-info-wrap item">
+                            <img th:src="@{/img/profile/handsome-asian-man-listening-music-through-headphones.jpg}" class="owl-carousel-image img-fluid" alt="">
+
+                            <div class="owl-carousel-info">
+                                <h4 class="mb-2">
+                                    William
+                                    <img th:src="@{/img/verified.png}" class="owl-carousel-verified-image img-fluid" alt="">
+                                </h4>
+
+                                <span class="badge">Full Stack Developer</span>
+                                <span class="badge">Design</span>
+                            </div>
+                        </div>
+
+                        <div class="owl-carousel-info-wrap item">
+                            <img th:src="@{/img/profile/cute-smiling-woman-outdoor-portrait.jpg}" class="owl-carousel-image img-fluid" alt="">
+
+                            <div class="owl-carousel-info">
+                                <h4 class="mb-2">Taylor</h4>
+                                <span class="badge">Junior Java Developer</span>
+                                <span class="badge">Html & CSS</span>
+                            </div>
+                        </div>
+
+                        <div class="owl-carousel-info-wrap item">
+                            <img th:src="@{/img/profile/man-portrait.jpg}" class="owl-carousel-image img-fluid" alt="">
+
+                            <div class="owl-carousel-info">
+                                <h4 class="mb-2">Nick</h4>
+                                <span class="badge">Spring Developer</span>
+                            </div>
+                        </div>
+
+                        <div class="owl-carousel-info-wrap item">
+                            <img th:src="@{/img/profile/woman-posing-black-dress-medium-shot.jpg}" class="owl-carousel-image img-fluid" alt="">
+
+                            <div class="owl-carousel-info">
+                                <h4 class="mb-2">
+                                    Elsa
+                                    <img th:src="@{/img/verified.png}" class="owl-carousel-verified-image img-fluid" alt="">
+                                </h4>
+                                <span class="badge">Web Developer</span>
+                            </div>
+                        </div>
+
+                        <div class="owl-carousel-info-wrap item">
+                            <img th:src="@{/img/profile/stylish-guy-posing-outdoors.jpg}" class="owl-carousel-image img-fluid" alt="">
+
+                            <div class="owl-carousel-info">
+                                <h4 class="mb-2">Jay</h4>
+                                <span class="badge">C++ Developer</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--card hero end-->
+    <!--Info Varie nell'home -->
+    <div id="about" class="about_section">
+        <div class="about_container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="about-left-image  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                                <img th:src="@{/img/about-dec-v3.png}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 align-self-center  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                            <div class="about-right-content">
+                                <div class="about_section-head">
+                                    <h6>About Us</h6>
+                                    <h2>Chi è Skill Bridge</h2>
+                                    <div class="line-dec"></div>
+                                </div>
+                                <p>Scopri i migliori corsi di formazione informatica! 🚀 Accedi a lezioni online su
+                                    programmazione, cybersecurity, intelligenza artificiale e molto altro. Migliora le
+                                    tue competenze e certificati con i nostri esperti! Inizia oggi stesso!</p>
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-4">
+                                        <div class="skill-item first-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                                            <div class="progress" data-percentage="90">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <div class="progress-value">
+                                                    <div>
+                                                        90%<br>
+                                                        <span>Coding</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4">
+                                        <div class="skill-item second-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                                            <div class="progress" data-percentage="80">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <div class="progress-value">
+                                                    <div>
+                                                        80%<br>
+                                                        <span>Web</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4">
+                                        <div class="skill-item third-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                                            <div class="progress" data-percentage="80">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <div class="progress-value">
+                                                    <div>
+                                                        80%<br>
+                                                        <span>Animation</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--info end-->
+
+    <!--Tasti rapidi-->
+    <div class="info_section cta">
+        <div class="info_container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="info_shop">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="info_section-heading">
+                                    <h6>I nostri corsi</h6>
+                                    <h2>Vai in Learning, acquista e ottieni i <em>corsi</em> migliori per te!</h2>
+                                </div>
+                                <p>Qui troverai corsi di JAVA, C++ e Python.</p>
+                                <div class="info_main-button">
+                                    <a th:href="@{learning}">Learning</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-2 align-self-end">
+                    <div class="info_subscribe">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="info_section-heading">
+                                    <h6>NEWSLETTER</h6>
+                                    <h2>Iscriviti alla nostra <em>Newsletter</em> per rimanere sempre aggiornato!</h2>
+                                </div>
+                                <div class="info_search-input">
+                                    <form id="subscribe" action="#">
+                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                            aria-describedby="emailHelp" placeholder="Email...">
+                                        <button type="submit">Iscriviti</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">Recensioni</p>
+                <h1>Cosa dicono i nostri clienti!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" th:src="@{/img/testimonial/testimonial-1.jpg}" style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>Ho trovato il sito davvero utile per cercare talenti nel settore informatico. La piattaforma
+                            è molto ben strutturata e facile da navigare. </p>
+                        <h5 class="mb-1">Francesca P.</h5>
+                        <span class="fst-italic">Sviluppatore Full Stack</span>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" th:src="@{/img/testimonial/testimonial-2.jpg}" style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>Utilizzare questo sito è stata un'esperienza fantastica! Avevo bisogno di un freelance per
+                            un'applicazione mobile e ho trovato il designer perfetto in pochissimo tempo.</p>
+                        <h5 class="mb-1">Giovanni L.</h5>
+                        <span class="fst-italic">Designer UI/UX</span>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" th:src="@{/img/testimonial/testimonial-3.jpg}" style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>Questo sito è diventato il mio punto di riferimento per assunzioni di professionisti IT
+                            freelance. Ho avuto modo di collaborare con esperti in cybersecurity e sviluppo software.
+                        </p>
+                        <h5 class="mb-1">Marco R.</h5>
+                        <span class="fst-italic">Responsabile IT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+    
+    <!--Footer start-->
+    <div th:replace="~{footer}"></div>
+    <!--Footer end-->
+
+    <div th:replace="~{javascriptlibraries}"></div>
+</body>
+</html>
